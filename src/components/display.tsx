@@ -1,10 +1,17 @@
-import  { useContext } from "react";
+import { useContext } from "react";
 import Spinner from "./spinner";
 import WeatherContext from "../context/weatherContext";
 
-
 const Display = () => {
-  const { error,loading, location,handleSearch,weatherData,setLocation,clearData} = useContext(WeatherContext)
+  const {
+    error,
+    loading,
+    location,
+    handleSearch,
+    weatherData,
+    setLocation,
+    clearData,
+  } = useContext(WeatherContext);
   return (
     <div className=" justify-center ">
       <div className=" flex justify-center flex-wrap md:flex-nowrap items-center mb-10 ">
@@ -15,12 +22,22 @@ const Display = () => {
           placeholder="Enter location"
           className=" p-2 mr-5 rounded-md text-[20px] mb-5 md:mb-2  "
         />
-        {weatherData && weatherData.length === 0 &&<button
-          className="ml-0 md:ml-5 bg-white text-blue-500 font-bold  mb-5 md:mb-2 p-2 hover:bg-purple-700 hover:text-white  rounded-md "
-          onClick={handleSearch}>
-          Get Weather
-        </button>}
-        {weatherData && weatherData.length> 0 && <button className="ml-5 bg-white text-yellow-400 font-bold mb-5 md:mb-2 p-2 hover:bg-red-700 hover:text-white  rounded-md" onClick={clearData}>CLEAR</button>}
+        {weatherData && weatherData.length === 0 && (
+          <button
+            className="ml-0 md:ml-5 bg-white text-blue-500 font-bold  mb-5 md:mb-2 p-2 hover:bg-purple-700 hover:text-white  rounded-md "
+            onClick={handleSearch}
+          >
+            Get Weather
+          </button>
+        )}
+        {weatherData && weatherData.length > 0 && (
+          <button
+            className="ml-5 bg-white text-yellow-400 font-bold mb-5 md:mb-2 p-2 hover:bg-red-700 hover:text-white  rounded-md"
+            onClick={clearData}
+          >
+            CLEAR
+          </button>
+        )}
       </div>
 
       {loading && <Spinner />}
@@ -49,7 +66,8 @@ const Display = () => {
           return (
             <div
               className="flex flex-col items-center justify-between w-50 mb-2 "
-              key={data.date}>
+              key={data.date}
+            >
               <div className="bg-[#439aeb] rounded-t-2xl p-5 text-center">
                 <p className="text-[#ff0] font-[20px]  ">{dayName}</p>
                 <div className="">
