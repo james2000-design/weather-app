@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { createContext, useState, useEffect,Dispatch, SetStateAction } from "react";
+import  { createContext, useState, useEffect,Dispatch, SetStateAction, ReactNode } from "react";
 
 interface WeatherData {
   date: number;
@@ -20,7 +20,7 @@ export interface WeatherContextProps {
   clearData: () => void;
 }
 interface props {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 const WeatherContext = createContext<Partial<WeatherContextProps>>({})
@@ -33,11 +33,12 @@ export const WeatherProvider = ({ children }: props) => {
   });
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
+  const apiKey = import.meta.env.VITE_APP_GEOCODE_API_KEY
 
   const fetchCoordinates = async (location: string) => {
     try {
       const response = await axios.get(
-        `https://maps.googleapis.com/maps/api/geocode/json?address=${location}&key=AIzaSyAkspZjsbKwn9F7AvTKj-SEH_F8e-84GbA`
+        `https://maps.googleapis.com/maps/api/geocode/json?address=${location}&key=${apiKey}`
       );
       const { results } = response.data;
       if (results.length > 0) {
@@ -81,7 +82,7 @@ export const WeatherProvider = ({ children }: props) => {
       setError("Please enter a location");
       return;
     }
-      clearData()
+     
     const coordinates = await fetchCoordinates(location);
     if (coordinates) {
       await fetchWeather(coordinates.lat, coordinates.lon);
@@ -91,6 +92,7 @@ export const WeatherProvider = ({ children }: props) => {
   const clearData = ()=>{
     
       setWeatherData([]);
+      setLocation('')
       localStorage.removeItem("weatherData");
   }
 

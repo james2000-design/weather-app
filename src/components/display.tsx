@@ -1,31 +1,25 @@
-import  { useContext ,useEffect } from "react";
+import  { useContext } from "react";
 import Spinner from "./spinner";
 import WeatherContext from "../context/weatherContext";
 
 
 const Display = () => {
   const { error,loading, location,handleSearch,weatherData,setLocation,clearData} = useContext(WeatherContext)
-
-
-  useEffect(() => {
-    
-  }, []);
-
   return (
     <div className=" justify-center ">
-      <div className=" flex justify-center items-center mb-10 ">
+      <div className=" flex justify-center flex-wrap md:flex-nowrap items-center mb-10 ">
         <input
           type="text"
           value={location}
           onChange={(e) => setLocation!(e.target.value)}
           placeholder="Enter location"
-          className=" p-2 mr-5 rounded-md text-[20px] "
+          className=" p-2 mr-5 rounded-md text-[20px] mb-5 md:mb-2  "
         />
-        <button
-          className="ml-5 bg-white text-blue-500 font-bold p-2 hover:bg-purple-700 hover:text-white  rounded-md "
+        {weatherData && weatherData.length === 0 &&<button
+          className="ml-0 md:ml-5 bg-white text-blue-500 font-bold p-2 hover:bg-purple-700 hover:text-white  rounded-md "
           onClick={handleSearch}>
           Get Weather
-        </button>
+        </button>}
         {weatherData && weatherData.length> 0 && <button className="ml-5 bg-white text-yellow-400 font-bold p-2 hover:bg-red-700 hover:text-white  rounded-md" onClick={clearData}>CLEAR</button>}
       </div>
 
@@ -62,7 +56,7 @@ const Display = () => {
                   <img src={weatherIconSrc} alt={data.weather} />
                 </div>
               </div>
-              <div className="bg-[#001964] text-[#ffe8c6] text-center w-full pb-5 text-[20px] font-bold font-sans ">
+              <div className="bg-[#001964] text-[#ffe8c6] text-center w-full pb-5 text-[20px] font-bold font-sans rounded-b-md ">
                 <p className="weather-description">
                   {data.weather.toUpperCase()}
                 </p>

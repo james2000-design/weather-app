@@ -22,5 +22,9 @@ The project uses the following main dependencies:
 
 `react`: A JavaScript library for building user interfaces.
 `react-dom`: A package that provides DOM-specific methods for working with React.
-`react-router-dom`: A collection of navigational components for React.
+`usecontext api`: it was used to manage state 
 `axios`: A promise-based HTTP client for the browser and Node.js.
+
+Additional Note
+
+`.env` you would need to add your geocode key from google 

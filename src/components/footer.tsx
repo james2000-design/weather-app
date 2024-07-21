@@ -1,7 +1,7 @@
 import Images from "../assets/images/images.png";
 const Footer = () => {
   return (
-    <div className="relative flex flex-col  mt-[5rem] mb-12 items-center justify-center">
+    <div className="relative flex flex-col  mt-[10rem] mb-5 items-center justify-center">
       <div className=" ">
         <img src={Images} />
       </div>
