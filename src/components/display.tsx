@@ -16,11 +16,11 @@ const Display = () => {
           className=" p-2 mr-5 rounded-md text-[20px] mb-5 md:mb-2  "
         />
         {weatherData && weatherData.length === 0 &&<button
-          className="ml-0 md:ml-5 bg-white text-blue-500 font-bold p-2 hover:bg-purple-700 hover:text-white  rounded-md "
+          className="ml-0 md:ml-5 bg-white text-blue-500 font-bold  mb-5 md:mb-2 p-2 hover:bg-purple-700 hover:text-white  rounded-md "
           onClick={handleSearch}>
           Get Weather
         </button>}
-        {weatherData && weatherData.length> 0 && <button className="ml-5 bg-white text-yellow-400 font-bold p-2 hover:bg-red-700 hover:text-white  rounded-md" onClick={clearData}>CLEAR</button>}
+        {weatherData && weatherData.length> 0 && <button className="ml-5 bg-white text-yellow-400 font-bold mb-5 md:mb-2 p-2 hover:bg-red-700 hover:text-white  rounded-md" onClick={clearData}>CLEAR</button>}
       </div>
 
       {loading && <Spinner />}
