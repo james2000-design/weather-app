@@ -27,4 +27,6 @@ The project uses the following main dependencies:
 
 Additional Note
 
-`.env` you would need to add your geocode key from google 
+`.env` you would need to add your geocode key from google but for now mine is active untill 15th August 2024
+
+`github repo`: https://github.com/james2000-design/weather-app.git
