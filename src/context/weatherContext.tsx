@@ -1,5 +1,12 @@
 import axios from "axios";
-import  { createContext, useState, useEffect,Dispatch, SetStateAction, ReactNode } from "react";
+import {
+  createContext,
+  useState,
+  useEffect,
+  Dispatch,
+  SetStateAction,
+  ReactNode,
+} from "react";
 
 interface WeatherData {
   date: number;
@@ -11,8 +18,8 @@ interface WeatherData {
 }
 
 export interface WeatherContextProps {
-  location?: string ;
-  setLocation:Dispatch<SetStateAction<string>>;
+  location?: string;
+  setLocation: Dispatch<SetStateAction<string>>;
   weatherData: WeatherData[];
   loading: boolean;
   error: string | null;
@@ -23,17 +30,17 @@ interface props {
   children: ReactNode;
 }
 
-const WeatherContext = createContext<Partial<WeatherContextProps>>({})
+const WeatherContext = createContext<Partial<WeatherContextProps>>({});
 
 export const WeatherProvider = ({ children }: props) => {
-  const [location, setLocation] = useState<string >("");
+  const [location, setLocation] = useState<string>("");
   const [weatherData, setWeatherData] = useState<WeatherData[]>(() => {
     const savedData = localStorage.getItem("weatherData");
     return savedData ? JSON.parse(savedData) : [];
   });
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
-  const apiKey = import.meta.env.VITE_APP_GEOCODE_API_KEY
+  const apiKey = import.meta.env.VITE_APP_GEOCODE_API_KEY;
 
   const fetchCoordinates = async (location: string) => {
     try {
@@ -71,8 +78,7 @@ export const WeatherProvider = ({ children }: props) => {
     } catch (error) {
       setError("Error fetching the weather data");
       console.error(error);
-      
-    } finally{
+    } finally {
       setLoading(false);
     }
   };
@@ -82,29 +88,28 @@ export const WeatherProvider = ({ children }: props) => {
       setError("Please enter a location");
       return;
     }
-     
+
     const coordinates = await fetchCoordinates(location);
     if (coordinates) {
       await fetchWeather(coordinates.lat, coordinates.lon);
     }
   };
 
-  const clearData = ()=>{
-    
-      setWeatherData([]);
-      setLocation('')
-      localStorage.removeItem("weatherData");
-  }
+  const clearData = () => {
+    setWeatherData([]);
+    setLocation("");
+    localStorage.removeItem("weatherData");
+  };
 
   useEffect(() => {
     const savedData = localStorage.getItem("weatherData");
     if (savedData) {
       setWeatherData(JSON.parse(savedData));
-      setLoading(false)
+      setLoading(false);
     }
   }, []);
 
-  return(
+  return (
     <WeatherContext.Provider
       value={{
         location,
@@ -113,7 +118,7 @@ export const WeatherProvider = ({ children }: props) => {
         loading,
         error,
         handleSearch,
-        clearData
+        clearData,
       }}
     >
       {children}
