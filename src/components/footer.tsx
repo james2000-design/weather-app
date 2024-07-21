@@ -5,7 +5,7 @@ const Footer = () => {
       <div className=" ">
         <img src={Images} />
       </div>
-      <p className="copyright-text">© Copyright 2023 EurOrbit</p>
+      <p className="copyright-text">&#169; Copyright 2024 EurOrbit</p>
     </div>
   );
 };
