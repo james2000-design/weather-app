@@ -1,30 +1,26 @@
-# React + TypeScript + Vite
+# Weather + App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a simple weather forecasting app built using Vite, React, and TypeScript. The app allows users to enter a location and fetches weather data for that location using a weather API and a location API
 
-Currently, two official plugins are available:
+Installation
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Clone the repository:
+`git clone <https://github.com/your-username/weather-app.git>`
+`cd weather-app`
 
-## Expanding the ESLint configuration
+Install the dependencies
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+`npm instal`
 
-- Configure the top-level `parserOptions` property like this:
+Running the App
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json', './tsconfig.app.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+`npm run dev`
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+Dependencies
+
+The project uses the following main dependencies:
+
+`react`: A JavaScript library for building user interfaces.
+`react-dom`: A package that provides DOM-specific methods for working with React.
+`react-router-dom`: A collection of navigational components for React.
+`axios`: A promise-based HTTP client for the browser and Node.js.
