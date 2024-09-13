@@ -66,7 +66,7 @@ export const WeatherProvider = ({ children }: props) => {
     setError(null);
     try {
       const response = await axios.get(
-        `http://www.7timer.info/bin/api.pl?lon=${lon}&lat=${lat}&product=civillight&output=json`
+        `https://www.7timer.info/bin/api.pl?lon=${lon}&lat=${lat}&product=civillight&output=json`
       );
       const data = response.data.dataseries;
       if (data.length === 0) {
